@@ -1,0 +1,4 @@
+github.com/webview/webview v0.0.0-20200724072439-e0c01595b361 h1:e0+/fQY5l9NdCwPsEg9S8AgE5lFhZ/6UX+b2KkpIBFg=
+github.com/webview/webview v0.0.0-20200724072439-e0c01595b361/go.mod h1:rpXAuuHgyEJb6kXcXldlkOjU6y4x+YcASKKXJNUhh0Y=
+lukechampine.com/uint128 v1.0.0 h1:764JS75JmwLi/UhTymgwwrculJqTvERJJDZ7GkUmt0c=
+lukechampine.com/uint128 v1.0.0/go.mod h1:c4eWIwlEGaxC/+H1VguhU4PHXNWDCDMUlWdIWl2j1gk=
