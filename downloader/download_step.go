@@ -10,7 +10,7 @@ import (
 
 // expects a chunklistreturn, puts out a blob
 func DownloadStep(_ interface{}, chunk playlist.ChunkListReturn, cfg PipelineConfig) interface{} {
-	retryWait := time.Minute / 4
+	retryWait := time.Minute / 2
 	retryDownload:
 	resp, err := http.Get(chunk.Url)
 
@@ -20,9 +20,9 @@ func DownloadStep(_ interface{}, chunk playlist.ChunkListReturn, cfg PipelineCon
 
 	if resp.StatusCode != 200 {
 		if resp.StatusCode == 404 {
-			fmt.Println("Chunk", chunk.ChunkID, "is being invisibly rate limited (HTTP 404). Waiting...")
+			fmt.Printf("Chunk %d is being invisibly rate limited (HTTP 404). Waiting %s...\n", chunk.ChunkID, retryWait.String())
 		} else {
-			fmt.Printf("Chunk %d is throwing an error: HTTP %d. This is assumed to be invisible rate limiting for now.", chunk.ChunkID, resp.StatusCode)
+			fmt.Printf("Chunk %d is throwing an error: HTTP %d. This is assumed to be invisible rate limiting for now. Waiting %s...\n", chunk.ChunkID, resp.StatusCode, retryWait.String())
 		}
 		time.Sleep(retryWait)
 		retryWait *= 2
